@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Questions 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    overflow: hidden;
+}
+
+/* БҮХ ХУУДАС */
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* ЭХНИЙ ХУУДАС */
+.welcome {
+    background: #f4b6d2;
+}
+
+.welcome h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.welcome p {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* АСУУЛТЫН ХУУДАС */
+.question-page {
+    background: #fffdf8;
+    position: relative;
+}
+
+/* ДЭВТРИЙН ШУГАМ */
+.question-page::before {
+    content: "";
+    position: absolute;
+    left: 40px;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: #f2b7c5;
+}
+
+.question {
+    font-size: 24px;
+    line-height: 1.6;
+    max-width: 340px;
+    margin-bottom: 45px;
+}
+
+/* YES NO */
+.buttons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    padding: 13px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.yes {
+    background: #f29abc;
+    color: white;
+}
+
+.no {
+    background: #eeeeee;
+    color: #333;
+}
+
+.next {
+    margin-top: 45px;
+    background: #222;
+    color: white;
+    font-size: 15px;
+}
+
+/* СҮҮЛИЙН ХУУДАС */
+.end {
+    background: #f4b6d2;
+}
+
+.end h1 {
+    font-size: 30px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ===================== -->
+<!-- 1. ЭХНИЙ ХУУДАС -->
+<!-- ===================== -->
+
+<div class="page welcome active" id="page1">
+
+    <div style="font-size:40px;">♡</div>
+
+    <h1>yuhjn huurhnuu🌷</h1>
+
+    <p>
+        ndd cms asuuh 3 bish 4 bish<br>
+        2 ch bish 5 asuult l bn👉🏻👈🏻...
+    </p>
+
+    <button class="next" onclick="nextPage()">
+        NEXT →
+    </button>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- 2. АСУУЛТ 1 -->
+<!-- ===================== -->
+
+<div class="page question-page" id="page2">
+
+    <div class="question">
+        01. Chi uurygu huurhun gj boddg uu💭
+    </div>
+
+    <div class="buttons">
+
+        <button class="yes" onclick="nextPage()">
+            YES 💗
+        </button>
+
+        <button class="no" onclick="nextPage()">
+            NO
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- 3. АСУУЛТ 2 -->
+<!-- ===================== -->
+
+<div class="page question-page" id="page3">
+
+    <div class="question">
+        02. Ajiliinhaa ergte duug hairaa gj duuddgygcn busad
+      chin medeh uu?🫶🏻
+    </div>
+
+    <div class="buttons">
+
+        <button class="yes" onclick="nextPage()">
+            YES 💗
+        </button>
+
+        <button class="no" onclick="nextPage()">
+            NO
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- 4. АСУУЛТ 3 -->
+<!-- ===================== -->
+
+<div class="page question-page" id="page4">
+
+    <div class="question">
+        03. chi ene zun huvsgul yvsan uu?👀
+    </div>
+
+    <div class="buttons">
+
+        <button
+            class="yes"
+            id="bigYes"
+            onclick="nextPage()">
+            YES 💗
+        </button>
+
+        <button
+            class="no"
+            onclick="makeYesBigger()">
+            NO
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- 5. АСУУЛТ 4 -->
+<!-- ===================== -->
+
+<div class="page question-page" id="page5">
+
+    <div class="question">
+        04. chi ali ohiniig ni songoh ve?🌷
+    </div>
+
+    <div class="buttons">
+
+        <button class="huurhun" onclick="nextPage()">
+            huurhun 
+        </button>
+
+        <button class="hugjiltei" onclick="nextPage()">
+            hugjiltei
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- 6. СҮҮЛИЙН ХУУДАС -->
+<!-- ===================== -->
+
+<div class="page end" id="page6">
+
+    <div style="font-size:45px;">♡</div>
+
+    <h1>chi aztai um ndd 2ula bga hha😝😌ng asuultygn dra asuuy</h1>
+          
+    <p>
+        bvh boloh ystoi zuil boldgooro<br>
+      bolj baiga bolhr baga guniglaj ih untj bgarai
+      chi zunduu mundgshu<3 
+    </p>
+
+</div>
+
+
+<script>
+
+let currentPage = 1;
+
+
+/* ДАРААГИЙН ХУУДАС */
+function nextPage() {
+
+    document
+        .getElementById("page" + currentPage)
+        .classList.remove("active");
+
+    currentPage++;
+
+    document
+        .getElementById("page" + currentPage)
+        .classList.add("active");
+}
+
+
+/* 3 ДАХЬ АСУУЛТЫН YES ТОМРОХ */
+let yesSize = 18;
+
+function makeYesBigger() {
+
+    yesSize += 12;
+
+    const yesButton = document.getElementById("bigYes");
+
+    yesButton.style.fontSize = yesSize + "px";
+
+    yesButton.style.padding =
+        (13 + yesSize / 3) + "px " +
+        (30 + yesSize / 2) + "px";
+
+}
+
+</script>
+
+</body>
+</html>
